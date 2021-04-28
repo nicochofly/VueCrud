@@ -14,8 +14,8 @@
 
 # 界面
 
-![image-20210428101613462](/home/nicocho/.config/Typora/typora-user-images/image-20210428101613462.png)
+![image-20210428101613462](https://github.com/nicochofly/VueCrud/blob/main/img/image-20210428101613462.png)
 
-![image-20210428101634438](/home/nicocho/.config/Typora/typora-user-images/image-20210428101634438.png)
+![image-20210428101634438](https://github.com/nicochofly/VueCrud/blob/main/img/image-20210428101634438.png)
 
-![image-20210428101658376](/home/nicocho/.config/Typora/typora-user-images/image-20210428101658376.png)
+![image-20210428101658376](https://github.com/nicochofly/VueCrud/blob/main/img/image-20210428101658376.png)
