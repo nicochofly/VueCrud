@@ -1,8 +1,7 @@
 # VueCrud
 
 
->一个简单的增删改查练手应用，后端使用springboot,数据库使用mysql,前端使用vue. 新手一枚，希望多多交流
->参考这位老哥的[blog](https://learner.blog.csdn.net/article/details/88925013)
+>一个简单的增删改查练手应用，后端使用springboot,数据库使用mysql,前端使用vue. 新手一枚，希望多多交流。
 
 # 功能
 1. 登陆
@@ -21,3 +20,6 @@
 ![image-20210428101634438](https://github.com/nicochofly/VueCrud/blob/main/img/image-20210428101634438.png)
 
 ![image-20210428101658376](https://github.com/nicochofly/VueCrud/blob/main/img/image-20210428101658376.png)
+
+
+主要是参考这位老哥的[blog](https://learner.blog.csdn.net/article/details/88925013)
