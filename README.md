@@ -2,6 +2,8 @@
 
 
 >一个简单的增删改查练手应用，后端使用springboot,数据库使用mysql,前端使用vue. 新手一枚，希望多多交流
+>参考这位老哥的[blog](https://learner.blog.csdn.net/article/details/88925013)
+
 # 功能
 1. 登陆
 2. 信息的增删改查
