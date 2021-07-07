@@ -1,0 +1,40 @@
+{
+ "platform" : ["android", "ios","quickapp"],
+  "audience": "all",
+  "notification" : {
+    "alert" : "Hi, JPush!",
+    "android" : {},
+    "ios" : {
+      "extras" : { "newsid" : 321}
+    }
+  },
+  "message": {
+    "msg_content": "Hi,JPush_message",
+    "content_type": "text",
+    "title": "msg",
+    "extras": {
+      "key": "value"
+    }
+  }
+}
+
+
+
+
+
+
+
+{  audience
+  "audience": {
+    "alias": "tv1"
+  },
+  "message": {
+    "content_type": "1",
+    "msg_content": "测试内容03",
+    "extras": {
+      "path": "http://localhost:8082/api/file/j5blnv.png"
+    },
+    "title": "推送"
+  },
+  "platform": "all"
+}

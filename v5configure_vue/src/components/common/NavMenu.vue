@@ -17,11 +17,10 @@
         placeholder="快速搜索..."
         prefix-icon="el-icon-search"
         size="medium"
-
         style="width: 300px;position:absolute;margin-top: 12px;right: 5% ;"
         v-model="keywords">
     </el-input>
-    <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">V5 Configure For Mobile Platform</span>
+    <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">大屏推送管理平台</span>
   </el-menu>
 </template>
 
@@ -31,10 +30,12 @@ export default {
   data () {
     return {
       navList: [
-        {name: '/index', navItem: '首页' },
-        // {name: '/list', navItem: '列表' },
-        {name: '/info', navItem: '详情'},
-        {name: '/library', navItem: '测试'}
+        {name: '/index', navItem: '设备列表' },
+        {name: '/devicegroups',navItem: '设备分组'},
+        {name: '/contents', navItem: '内容列表' },
+        {name: '/category', navItem: '分类列表' },
+        {name: '/info', navItem: '推送记录'},
+        // {name: '/library', navItem: '测试'}
       ]
     }
   },

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/VueCrud.iml" filepath="$PROJECT_DIR$/.idea/VueCrud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/v5configure_server/v5configure_s.iml" filepath="$PROJECT_DIR$/v5configure_server/v5configure_s.iml" />
+    </modules>
+  </component>
+</project>

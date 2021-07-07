@@ -17,12 +17,9 @@ public class LoginInterceptor  implements HandlerInterceptor{
         String[] requireAuthPages = new String[]{
                 "index",
         };
-
         String uri = httpServletRequest.getRequestURI();
-
         uri = StringUtils.remove(uri, contextPath+"/");
         String page = uri;
-
         if(begingWith(page, requireAuthPages)){
             User user = (User) session.getAttribute("user");
             if(user==null) {

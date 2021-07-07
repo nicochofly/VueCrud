@@ -7,7 +7,7 @@ import store from './store'
 Vue.config.productionTip = false
 import moment from 'moment'
 var axios = require('axios')
-axios.defaults.baseURL = 'http://localhost:8443/api'
+axios.defaults.baseURL = 'http://43.129.67.227:8989/api'
 Vue.prototype.$axios = axios
 Vue.prototype.$moment = moment
 Vue.use(ElementUI)

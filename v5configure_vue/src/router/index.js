@@ -6,11 +6,13 @@ import Home from '../components/Home'
 import LibraryIndex from "@/components/library/LibraryIndex";
 // import AboutIndex from "@/components/about/AboutIndex";
 import ChanelInfo from "@/components/ChanelInfo";
-import ChanelList from "@/components/ChanelList";
+import DeviceList from "@/components/DeviceList";
+import ContentList from "@/components/ContentList";
+import DeviceGroupList from "@/components/DeviceGroupList";
+import CategoryList from "@/components/CategoryList";
 
 
 Vue.use(Router)
-
 export default new Router({
     mode: 'history',
     routes: [
@@ -24,7 +26,7 @@ export default new Router({
                 {
                     path: '/index',
                     name: 'List',
-                    component: ChanelList,
+                    component: DeviceList,
                     meta: {
                         requireAuth: true
                     }
@@ -43,15 +45,32 @@ export default new Router({
                     }
                 }
                 ,
-                // {
-                //     path: '/about',
-                //     name: 'About',
-                //     component: AboutIndex,
-                //     meta: {
-                //         requireAuth: true
-                //     }
-                // }
-                // ,
+                {
+                    path: '/contents',
+                    name: 'Contents',
+                    component: ContentList,
+                    meta: {
+                        requireAuth: true
+                    }
+                }
+                , {
+                    path: '/devicegroups',
+                    name: 'DeviceGroups',
+                    component: DeviceGroupList,
+                    meta: {
+                        requireAuth: true
+                    }
+                }
+                ,
+                {
+                    path: '/category',
+                    name: 'Category',
+                    component: CategoryList,
+                    meta: {
+                        requireAuth: true
+                    }
+                }
+                ,
                 {
                     path: '/info',
                     name: 'Info',
