@@ -14,7 +14,7 @@ public class Deviceinfo {
   @Column(name = "id")
   private long id;
   private String name;
-  private String alias;
+  private String register_id;
   private String device_id;
   private String deviceGroup;  //device_group  deviceGroup
 
@@ -42,14 +42,13 @@ public class Deviceinfo {
   }
 
 
-  public String getAlias() {
-    return alias;
+  public String getRegister_id() {
+    return register_id;
   }
 
-  public void setAlias(String alias) {
-    this.alias = alias;
+  public void setRegister_id(String register_id) {
+    this.register_id = register_id;
   }
-
 
   public String getTime() {
     return time;

@@ -5,7 +5,7 @@ import Login from '@/components/Login'
 import Home from '../components/Home'
 import LibraryIndex from "@/components/library/LibraryIndex";
 // import AboutIndex from "@/components/about/AboutIndex";
-import ChanelInfo from "@/components/ChanelInfo";
+// import ChanelInfo from "@/components/ChanelInfo";
 import DeviceList from "@/components/DeviceList";
 import ContentList from "@/components/ContentList";
 import DeviceGroupList from "@/components/DeviceGroupList";
@@ -70,15 +70,15 @@ export default new Router({
                         requireAuth: true
                     }
                 }
-                ,
-                {
-                    path: '/info',
-                    name: 'Info',
-                    component: ChanelInfo,
-                    meta: {
-                        requireAuth: true
-                    }
-                }
+                // ,
+                // {
+                //     path: '/info',
+                //     name: 'Info',
+                //     component: ChanelInfo,
+                //     meta: {
+                //         requireAuth: true
+                //     }
+                // }
                 // ,
                 // {
                 //     path: '/list',

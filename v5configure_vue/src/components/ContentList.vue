@@ -85,7 +85,8 @@
         </el-select>
       </el-form-item>
 
-      <el-form-item label="有效期" prop="expirationdate">
+      <el-form-item label="有效期" prop="expirationdate"
+                    v-if="this.dialogType!=0 || (ruleForm.expirationdate[0]>0&&ruleForm.expirationdate[1]>0)">
 
         <el-date-picker
             v-model="ruleForm.expirationdate"
@@ -117,7 +118,8 @@
   </el-dialog>
 
 
-  <el-dialog title="推送设备" width="30%" v-if="push_dialog_show" :visible.sync="push_dialog_form_visible"
+  <el-dialog title="推送设备" width="30%" v-if="push_dialog_show" :close-on-click-modal='false'
+             :visible.sync="push_dialog_form_visible"
              @close='closeSelectDialog()'>
     <el-cascader
         ref="cascader"
@@ -144,14 +146,11 @@ export default {
   data() {
     return {
       push_dialog_show: false,
-      currentpushcontent: '',
+      currentpushcontent: {},
       push_dialog_form_visible: false,
-      push_dialog_data: [{id: -1, name: ""}],
+      push_dialog_data: [],
       push_dialog_props: {
         multiple: true,
-        value: 'alias',
-        label: 'name',
-        children: '',
         checkStrictly: false,
         lazy: true, // 此处必须为true
         lazyLoad: (node, resolve) => {
@@ -235,7 +234,11 @@ export default {
       let url = '/queryalldevicegroup';
       this.$axios.get(url).then(resp => {
         if (resp && resp.data.code === 200) {
-          _this.push_dialog_data = resp.data.data;
+          _this.push_dialog_data = resp.data.data.map(item => ({
+            value: item.alias,
+            label: item.name,
+            leaf: false
+          }))
         } else {
           _this.push_dialog_data = null;
         }
@@ -243,27 +246,20 @@ export default {
     },
 // 获取子层数据
     getSubData(data, resolve) {
-      //       // eslint-disable-next-line no-unused-vars
-      let group_devices = []
-      let url = '/finddevicebygroupname?group_name=' + data.name;
+      let url = '/finddevicebygroupname?group_name=' + data.label;
       this.$axios.get(url).then(resp => {
         if (resp && resp.data.code === 200) {
-          group_devices = resp.data.data
-          resolve(group_devices)
+          const nodes = resp.data.data.map(item => ({
+            value: item.id,
+            label: item.name,
+            leaf: true,
+          }))
+          resolve(nodes)
         }
       })
     },
     //=============================资源操作相关请求===========================================//
 
-    // handleExceed(files, fileList) {
-    //   this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
-    // },
-    // beforeRemove(file) {
-    //   return this.$confirm(`确定移除 ${file.name}？`)
-    // },
-    // clear() {
-    //   this.$refs.upload.clearFiles()
-    // },
     uploadImg() {
       this.ruleForm.resource_path.push(this.$refs.imgUpload.url)
       this.ruleForm.resource_str = this.processStringArray()
@@ -313,13 +309,11 @@ export default {
           _this.push_dialog_show = true;
           _this.push_dialog_form_visible = true;
           _this.currentpushcontent = _this.contentlist[index];
-          _this.queryAllDeviceGroup();
+          _this.queryDeviceGroup();
           break;
       }
-
     },
     filldata(info) {
-
       this.ruleForm.id = info.id,
           this.ruleForm.name = info.name,
           this.ruleForm.content = info.content,
@@ -331,9 +325,6 @@ export default {
           this.ruleForm.date = info.date,
           this.ruleForm.resource_path = info.resource_path.split(";"),
           this.ruleForm.resource_str = info.resource_path,
-          // console.log("start >> " + info.expirationdate_start),
-          // console.log("end >> " + info.expirationdate_end),
-
 
           this.ruleForm.expirationdate.push(info.expirationdate_start),
           this.ruleForm.expirationdate.push(info.expirationdate_end);
@@ -351,15 +342,13 @@ export default {
       })
     },
 
-    test() {
-      console.log(this.ruleForm.category.id)
-      // console.log(this.ruleForm.expirationdate[0]);
-      // console.log(this.ruleForm.expirationdate[1]);
-    },
+    // test() {
+    //   console.log(this.ruleForm.category.id)
+    //   // console.log(this.ruleForm.expirationdate[0]);
+    //   // console.log(this.ruleForm.expirationdate[1]);
+    // },
 
     submitForm() {
-
-
       var _this = this;
       _this.channelinfo = _this.ruleForm.name
       _this.$refs.ruleForm.validate((valid) => {
@@ -470,17 +459,19 @@ export default {
       let checkNodes = this.$refs['cascader'].getCheckedNodes();
       var local_alias = []
       var local_registerid = []
-      checkNodes.forEach((cn, index) => {
+      checkNodes.forEach((cn) => {
 
         if (cn.children.length > 0) {
           local_alias.push(cn.value)
         } else {
           local_registerid.push(cn.value)
         }
-        console.log("nodes children >>> " + cn.children)
-        console.log("result >>>>" + index + " label " + cn.label + " isLeaf " + cn.leaf + "  cn.value " + cn.value + "   children  " + cn.children.length);
+        // console.log("nodes children >>> " + cn.children)
+        // console.log("result >>>>" + index + " label " + cn.label + " isLeaf " + cn.leaf + "  cn.value " + cn.value + "   children  " + cn.children.length);
       });
 
+      // console.log("nodes expirationdate_start >>> " + this.currentpushcontent.expirationdate_start)
+      // console.log("nodes expirationdate_end >>> " + this.currentpushcontent.expirationdate_end)
 
       this.$axios
           .post('/pushrequest', {
@@ -490,7 +481,10 @@ export default {
             contentType: this.currentpushcontent.type_id,
             messageContent: this.currentpushcontent.content,
             title: "推送",
-            extras: {"path": [this.currentpushcontent.resource_path]}
+            extras: {
+              "path": this.currentpushcontent.resource_path.split(";").filter(item => item != ''),
+              "time": [this.currentpushcontent.expirationdate_start, this.currentpushcontent.expirationdate_end],
+            }
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {

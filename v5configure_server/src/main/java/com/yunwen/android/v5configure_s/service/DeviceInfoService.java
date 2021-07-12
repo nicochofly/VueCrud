@@ -31,7 +31,7 @@ public class DeviceInfoService {
     }
 
 
-    public void removeDeviceInfoById(Integer id) {
+    public void removeDeviceInfoById(Long id) {
         deviceInfoDAO.deleteById(id);
     }
 

@@ -29,7 +29,7 @@ public class PushContentInfoService {
 //
 //    }
 
-    public void removePushContentById(Integer id) {
+    public void removePushContentById(Long id) {
         pushContentDAO.deleteById(id);
     }
 

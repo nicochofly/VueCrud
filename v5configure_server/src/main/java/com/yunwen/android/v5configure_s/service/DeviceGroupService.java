@@ -27,7 +27,7 @@ public class DeviceGroupService {
 //
 //    }
 
-    public void removeDeviceGroupById(Integer id) {
+    public void removeDeviceGroupById(Long id) {
         deviceGroupDAO.deleteById(id);
     }
 

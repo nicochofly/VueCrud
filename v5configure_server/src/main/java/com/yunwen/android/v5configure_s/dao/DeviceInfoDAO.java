@@ -8,13 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 
-public interface DeviceInfoDAO extends JpaRepository<Deviceinfo,Integer> {
+public interface DeviceInfoDAO extends JpaRepository<Deviceinfo, Long> {
 
     List<Deviceinfo> findByName(String deviceName);
 
     List<Deviceinfo> findByDeviceGroup(String device_group);
 
-    boolean removeDeviceInfoById(int id);
+    boolean removeDeviceInfoById(long id);
 
 //    Deviceinfo findByUuid(String uuid);
 }

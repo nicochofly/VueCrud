@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-public interface DeviceGroupDAO extends JpaRepository<DeviceGroup,Integer> {
+public interface DeviceGroupDAO extends JpaRepository<DeviceGroup,Long> {
 
 //    List<DeviceGroup> findByName(String deviceName);
 

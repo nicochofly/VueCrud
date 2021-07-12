@@ -31,7 +31,7 @@ public class DeviceController {
     @ResponseBody
     public RequestResult addDeviceInfo(@RequestBody Deviceinfo ci) {
         boolean flag = deviceInfoService.addDeviceinfo(ci);
-        return new RequestResult(flag ? 200 : 400);
+        return new RequestResult(flag ? 400 : 200);
     }
 
 
@@ -49,8 +49,9 @@ public class DeviceController {
     @CrossOrigin
     @DeleteMapping("/api/removedevice/{id}")
     @ResponseBody
-    public RequestResult removeDeviceInfo(@PathVariable("id") int id) {
+    public RequestResult removeDeviceInfo(@PathVariable("id") Long id) {
         try {
+            System.out.println(">>>>>>>>>>>"+id);
             deviceInfoService.removeDeviceInfoById(id);
             return new RequestResult(200);
         } catch (Exception e) {

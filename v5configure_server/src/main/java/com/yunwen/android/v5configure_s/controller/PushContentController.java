@@ -52,7 +52,10 @@ public class PushContentController {
     @ResponseBody
     public RequestResult addPushContent(@RequestBody Pushcontent ci) {
         boolean flag = pushContentService.addPushContent(ci);
-        return new RequestResult(flag ? 200 : 400);
+
+
+        System.out.println("flag == " + flag);
+        return new RequestResult(flag ? 400 : 200);
     }
 
 
@@ -70,7 +73,7 @@ public class PushContentController {
     @CrossOrigin
     @DeleteMapping("/api/removecontent/{id}")
     @ResponseBody
-    public RequestResult removePushContent(@PathVariable("id") int id) {
+    public RequestResult removePushContent(@PathVariable("id") long id) {
         try {
             pushContentService.removePushContentById(id);
             return new RequestResult(200);
@@ -173,15 +176,15 @@ public class PushContentController {
     }
 
 
-    public void doRealJushRequest(JPushEntity jPushEntity) {
+    private void doRealJushRequest(JPushEntity jPushEntity) {
 
         try {
             URL url = new URL(jpushURL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             urlConnection.setRequestMethod("POST");
-            urlConnection.setConnectTimeout(5000);
-            urlConnection.setReadTimeout(5000);
+            urlConnection.setConnectTimeout(20000);
+            urlConnection.setReadTimeout(20000);
             urlConnection.setUseCaches(false);
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -223,10 +226,7 @@ public class PushContentController {
     public String getBase64Result(String appKey, String masterSecret) {
         String params = appKey + ":" + masterSecret;
         String base64 = Base64.getEncoder().encodeToString(params.getBytes());
-
-
 //        System.out.println("base 64 " + base64);
-
         return "Basic " + base64;
     }
 
@@ -271,19 +271,15 @@ public class PushContentController {
 
         JSONObject extras = new JSONObject();
         Map aa = jPushEntity.getExtras();
-        Set<Map.Entry<String, String[]>> entries = aa.entrySet();
+        Set<Map.Entry<String, Object[]>> entries = aa.entrySet();
         Iterator iterator = entries.iterator();
+
         while (iterator.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry<String, String>) iterator.next();
+            Map.Entry<String, Object> entry = (Map.Entry<String, Object>) iterator.next();
             extras.put(entry.getKey(), entry.getValue());
         }
-
         message.put("extras", extras);
         result.put("message", message);
-
-
-        System.out.println(result.toJSONString());
-
 
         return result.toJSONString();
     }

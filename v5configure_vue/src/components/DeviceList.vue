@@ -13,8 +13,8 @@
     </el-table-column>
     <el-table-column
         align="center"
-        prop="alias"
-        label="设备别名">
+        prop="register_id"
+        label="Register_Id">
     </el-table-column>
     <el-table-column
         align="center"
@@ -57,13 +57,13 @@
       <el-form-item label="设备名称" prop="name">
         <el-input v-model="ruleForm.name" placeholder="设备名称"></el-input>
       </el-form-item>
-      <el-form-item label="别名" prop="alias">
-        <el-input v-model="ruleForm.alias" placeholder="别名"></el-input>
+      <el-form-item label="Register_Id" prop="register_id">
+        <el-input v-model="ruleForm.register_id" placeholder="别名"></el-input>
       </el-form-item>
       <el-form-item label="设备号" prop="device_id">
         <el-input v-model="ruleForm.device_id" placeholder="设备号"></el-input>
       </el-form-item>
-      <el-form-item label="设备分组" prop="device_group" >
+      <el-form-item label="设备分组" prop="device_group">
         <el-select v-model="ruleForm.device_group" placeholder="请选择" style="width:100%">
           <el-option
               v-for="item in grouplist"
@@ -121,7 +121,7 @@ export default {
       ruleForm: {
         id: '',
         name: '',
-        alias: '',
+        register_id: '',
         device_id: '',
         device_group: '',
         operator_name: '',
@@ -139,7 +139,7 @@ export default {
         name: [
           {required: true, message: '请输入设备名称', trigger: 'blur'},
         ],
-        alias: [
+        register_id: [
           {required: true, message: '请输入设备别名', trigger: 'blur'}
         ],
         device_id: [
@@ -247,7 +247,7 @@ export default {
 
       this.device = info.name
       this.$axios
-          .delete('/remove/' + info.id).then(resp => {
+          .delete('/removedevice/' + info.id).then(resp => {
         if (resp && resp.data.code === 200) {
           this.queryall()
           // this.addevent()
@@ -268,7 +268,7 @@ export default {
             this.$axios
                 .post('/appenddevice', {
                   name: _this.ruleForm.name,
-                  alias: _this.ruleForm.alias,
+                  register_id: _this.ruleForm.register_id,
                   device_id: _this.ruleForm.device_id,
                   device_group: _this.ruleForm.device_group,
                   time: this.$moment(new Date()).format('YYYY-MM-DD  HH:mm:ss'),
@@ -290,7 +290,7 @@ export default {
                 .post('/updatedevice', {
                   id: _this.ruleForm.id,
                   name: _this.ruleForm.name,
-                  alias: _this.ruleForm.alias,
+                  register_id: _this.ruleForm.register_id,
                   device_id: _this.ruleForm.device_id,
                   device_group: _this.ruleForm.device_group,
                   time: this.$moment(new Date()).format('YYYY-MM-DD  HH:mm:ss'),
@@ -321,7 +321,7 @@ export default {
       this.ruleForm = {
         id: '',
         name: '',
-        alias: '',
+        register_id: '',
         device_id: '',
         device_group: '',
         time: '',

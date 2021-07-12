@@ -54,7 +54,7 @@
         <el-input v-model="ruleForm.name" placeholder="分组名称"></el-input>
       </el-form-item>
 
-      <el-form-item label="分组名称" prop="alias">
+      <el-form-item label="分组别名" prop="alias">
         <el-input v-model="ruleForm.alias" placeholder="分组别名"></el-input>
       </el-form-item>
       <el-form-item label="备注" prop="note">

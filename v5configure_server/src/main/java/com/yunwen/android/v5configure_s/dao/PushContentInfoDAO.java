@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-public interface PushContentInfoDAO extends JpaRepository<Pushcontent,Integer> {
+public interface PushContentInfoDAO extends JpaRepository<Pushcontent,Long> {
 
     List<Pushcontent> findByName(String pushcontentName);
 
-    boolean removePushcontentById(int id);
+    boolean removePushcontentById(Long id);
 
 //    Pushcontent findByUuid(String uuid);
 }

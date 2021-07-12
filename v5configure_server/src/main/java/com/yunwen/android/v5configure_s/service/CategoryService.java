@@ -29,7 +29,7 @@ public class CategoryService {
 //
 //    }
 
-    public void removeCategoryById(Integer id) {
+    public void removeCategoryById(Long id) {
         categoryDAO.deleteById(id);
     }
 

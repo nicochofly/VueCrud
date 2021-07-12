@@ -34,7 +34,7 @@ export default {
         {name: '/devicegroups',navItem: '设备分组'},
         {name: '/contents', navItem: '内容列表' },
         {name: '/category', navItem: '分类列表' },
-        {name: '/info', navItem: '推送记录'},
+        // {name: '/info', navItem: '推送记录'},
         // {name: '/library', navItem: '测试'}
       ]
     }

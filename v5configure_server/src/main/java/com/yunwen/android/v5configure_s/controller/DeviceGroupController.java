@@ -32,7 +32,7 @@ public class DeviceGroupController {
     @ResponseBody
     public RequestResult addDeviceGroup(@RequestBody DeviceGroup ci) {
         boolean flag = deviceGroupService.addDeviceGroup(ci);
-        return new RequestResult(flag ? 200 : 400);
+        return new RequestResult(flag ? 400 : 200);
     }
 
 
@@ -50,7 +50,7 @@ public class DeviceGroupController {
     @CrossOrigin
     @DeleteMapping("/api/removedevicegroup/{id}")
     @ResponseBody
-    public RequestResult removeDeviceGroup(@PathVariable("id") int id) {
+    public RequestResult removeDeviceGroup(@PathVariable("id") Long id) {
         try {
             deviceGroupService.removeDeviceGroupById(id);
             return new RequestResult(200);

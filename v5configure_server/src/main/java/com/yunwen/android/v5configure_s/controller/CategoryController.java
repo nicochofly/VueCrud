@@ -32,7 +32,7 @@ public class CategoryController {
     @ResponseBody
     public RequestResult addCategory(@RequestBody Category ci) {
         boolean flag = categoryService.addCategory(ci);
-        return new RequestResult(flag ? 200 : 400);
+        return new RequestResult(flag ? 400 : 200);
     }
 
 
@@ -50,7 +50,7 @@ public class CategoryController {
     @CrossOrigin
     @DeleteMapping("/api/removecategory/{id}")
     @ResponseBody
-    public RequestResult removeCategory(@PathVariable("id") int id) {
+    public RequestResult removeCategory(@PathVariable("id") Long id) {
         try {
             categoryService.removeCategoryById(id);
             return new RequestResult(200);
