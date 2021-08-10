@@ -1,6 +1,6 @@
 <template>
 <div>
-  <nav-menu></nav-menu>
+  <nav-menu class="nav"></nav-menu>
   <router-view/>
 </div>
 </template>
@@ -14,5 +14,7 @@ export default {
 </script>
 
 <style scoped>
-
+.nav{
+  margin-left:auto; margin-right:auto;
+}
 </style>

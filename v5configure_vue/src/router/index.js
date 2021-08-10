@@ -3,13 +3,14 @@ import Router from 'vue-router'
 // import AppIndex from '@/components/home/AppIndex'
 import Login from '@/components/Login'
 import Home from '../components/Home'
-import LibraryIndex from "@/components/library/LibraryIndex";
+// import LibraryIndex from "@/components/library/LibraryIndex";
 // import AboutIndex from "@/components/about/AboutIndex";
 // import ChanelInfo from "@/components/ChanelInfo";
 import DeviceList from "@/components/DeviceList";
 import ContentList from "@/components/ContentList";
 import DeviceGroupList from "@/components/DeviceGroupList";
 import CategoryList from "@/components/CategoryList";
+import Books from "@/components/Books";
 
 
 Vue.use(Router)
@@ -36,10 +37,18 @@ export default new Router({
                     //     requireAuth: true
                     // }
                 },
-                {
+             /*   {
                     path: '/library',
                     name: 'Library',
                     component: LibraryIndex,
+                    meta: {
+                        requireAuth: true
+                    }
+                }*/
+                {
+                    path: '/book',
+                    name: 'Books',
+                    component: Books,
                     meta: {
                         requireAuth: true
                     }
