@@ -13,6 +13,11 @@ axios.defaults.baseURL = 'http://43.129.67.227:8989/api'
 Vue.prototype.$axios = axios
 Vue.prototype.$moment = moment
 Vue.use(ElementUI)
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+
 router.beforeEach((to, from, next) => {
         if (to.meta.requireAuth) {
             if (store.state.user.username) {
