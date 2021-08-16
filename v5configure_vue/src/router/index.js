@@ -12,6 +12,7 @@ import DeviceGroupList from "@/components/DeviceGroupList";
 import CategoryList from "@/components/CategoryList";
 // import Books from "@/components/Books";
 import melemo_home from "@/components/kids_cloth/melemo_home";
+import melemo_all from "@/components/kids_cloth/melemo_all";
 
 
 Vue.use(Router)
@@ -76,6 +77,14 @@ export default new Router({
                     path: '/category',
                     name: 'Category',
                     component: CategoryList,
+                    meta: {
+                        requireAuth: true
+                    }
+                },
+                {
+                    path: '/melemoall',
+                    name: 'MelemoAll',
+                    component: melemo_all,
                     meta: {
                         requireAuth: true
                     }

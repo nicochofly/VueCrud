@@ -4,7 +4,7 @@
       Helloworld</p>
     <span class="titleClass">Melemo-Kids</span>
     <el-row type="flex" justify="space-around" :class="isFocus?'inputDeepFocus':'inputDeep'">
-      <el-col :span="3" :offset="4" style="display: flex;
+      <el-col :span="3" :offset="3" style="display: flex;
             justify-content: center;
             align-items: center;">
         <el-input
@@ -16,7 +16,7 @@
             @focus="localFocus"
             @blur="localBlur"/>
       </el-col>
-      <el-col :span="8" :pull="1">
+      <el-col :span="9" :pull="1">
         <nav-menu class="nav"/>
       </el-col>
       <el-col :span="4" :pull="4" style="display: flex;

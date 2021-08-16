@@ -49,7 +49,8 @@ export default {
         {name: '/category', navItem: 'CategoryList'},
         // {name: '/info', navItem: '推送记录'},
         // {name: '/library', navItem: '测试'}
-        {name: '/melemohome', navItem: 'Test'}
+        {name: '/melemohome', navItem: 'Test'},
+        {name: '/melemoall', navItem: 'Test1'}
         // {name: '/index', navItem: require("@/assets/icon.png")},
         // {name: '/devicegroups', navItem: require("@/assets/icon.png")},
         // {name: '/contents', navItem: require("@/assets/icon.png")},
