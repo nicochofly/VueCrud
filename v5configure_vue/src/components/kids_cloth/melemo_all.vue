@@ -92,7 +92,21 @@
 
 
     <el-col :span="20" style="height: 100%">
-      hahahaha
+      <!--     <div class="grid_layout" v-for="item in dataList" :key="item.name">
+             <img :src="item.src"/>
+           </div>-->
+      <!--      <el-row gutter="10px" >
+              <el-col span="51985041" v-for="item in dataList" :key="item.name">
+                <img :src="item.src">
+              </el-col>
+            </el-row>-->
+      <div>
+        <ul class="grid">
+          <li v-for="item in dataList" :key="item.name">
+            <a target="_blank"><img v-bind:src="item.src"/></a>
+          </li>
+        </ul>
+      </div>
     </el-col>
   </el-row>
 
@@ -118,7 +132,69 @@ export default {
       }, {name: "12-18 Months", value: 0}, {name: "18-24 Months", value: 0}, {
         name: "2 years",
         value: 0
-      }, {name: "3 years", value: 0}]
+      }, {name: "3 years", value: 0}],
+      dataList: [
+        {
+          name: "蓝底方格包屁服",
+          src: require("@/assets/a1.webp"),
+          price: 29.90
+        },
+        {
+          name: "白底蓝点包屁服",
+          src: require("@/assets/a2.webp"),
+          price: 29.90
+        },
+        {
+          name: "褐色点童装",
+          src: require("@/assets/a3.webp"),
+          price: 18.90
+        },
+        {
+          name: "白底蓝点T恤",
+          src: require("@/assets/a4.webp"),
+          price: 19.90
+        },
+        {
+          name: "白底蓝块T恤",
+          src: require("@/assets/a5.webp"),
+          price: 19.90
+        },
+        {
+          name: "白底橙条童装",
+          src: require("@/assets/a6.webp"),
+          price: 29.90
+        },
+        {
+          name: "白底黑卡童装",
+          src: require("@/assets/a7.webp"),
+          price: 18.90
+        },
+        {
+          name: "白底花点T恤",
+          src: require("@/assets/a8.webp"),
+          price: 19.90
+        },
+        {
+          name: "白底黑点包屁服",
+          src: require("@/assets/a9.webp"),
+          price: 19.90
+        },
+        {
+          name: "白底褐圈包屁服",
+          src: require("@/assets/a10.webp"),
+          price: 19.90
+        },
+        {
+          name: "白底花圈包屁服",
+          src: require("@/assets/a11.webp"),
+          price: 39.90
+        },
+        {
+          name: "白底蓝圈包屁服",
+          src: require("@/assets/a12.webp"),
+          price: 39.90
+        }
+      ],
     }
   },
   methods: {
@@ -186,5 +262,45 @@ export default {
   -webkit-transform: rotateZ(90deg);
   -ms-transform: rotate(90deg);
   transform: rotateZ(90deg);
+}
+
+
+.wrapper ul {
+  overflow: hidden;
+  margin: 0 -10px;
+  padding: 0;
+  list-style: none;
+}
+
+.wrapper li {
+  float: left;
+  width: calc(33.333333% - 20px);
+  margin: 0 10px 20px 10px;
+}
+
+
+ul.grid {
+  list-style: none;
+  width: 1500px;
+  margin: 5px;
+  text-align: left;
+}
+
+ul.grid li {
+  padding: 10px;
+  float: left;
+  cursor: pointer;
+  border: 2px solid #e8e8e8;
+  box-sizing: border-box;
+}
+
+ul.grid li img {
+  width: 460px;
+  height: 460px ;
+  object-fit: cover;
+  display: block;
+  border: none;
+  padding: 20px;
+  box-sizing: border-box;
 }
 </style>
